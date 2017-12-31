@@ -22,7 +22,7 @@ defmodule ExMagicEightballWebapp.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :sqlite_ecto, :cowboy, :plug]]
+    [applications: [:logger, :cowboy, :plug]]
   end
 
 end
