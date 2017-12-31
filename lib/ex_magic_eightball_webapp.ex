@@ -9,8 +9,7 @@ defmodule ExMagicEightballWebapp do
   Init function that runs on application start.
   """
   def start(_type, _args) do
-    # Mount application to the port specified (default: 4000)
-    {:ok, _} = Plug.Adapters.Cowboy.http(ExMagicEightballWebapp.HttpRouter, [])
+    {:ok, _} = Plug.Adapters.Cowboy.http(ExMagicEightballWebapp.Router, [])
   end
   
 end
