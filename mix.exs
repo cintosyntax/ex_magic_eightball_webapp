@@ -22,7 +22,10 @@ defmodule ExMagicEightballWebapp.Mixfile do
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug]]
+    [
+      applications: [:logger, :cowboy, :plug],
+      mod: {ExMagicEightballWebapp, []}
+    ]
   end
 
 end
