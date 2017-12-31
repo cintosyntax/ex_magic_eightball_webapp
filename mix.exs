@@ -16,6 +16,7 @@ defmodule ExMagicEightballWebapp.Mixfile do
     [
      {:cowboy, "~> 1.0.0"},
      {:plug, "~> 1.0"},
+     {:poison, "~> 3.1"},
      {:ex_guard, "~> 1.3", only: :dev},
      {:remix, "~> 0.0.1", only: :dev}
     ]
@@ -23,7 +24,7 @@ defmodule ExMagicEightballWebapp.Mixfile do
 
   def application do
     [
-      applications: applications(Mix.env),
+      extra_applications: applications(Mix.env),
       mod: {ExMagicEightballWebapp, []}
     ]
   end

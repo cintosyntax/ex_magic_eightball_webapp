@@ -1,11 +1,16 @@
 defmodule ExMagicEightballWebapp.Router do
   use Plug.Router
-  
+
+  plug Plug.Parsers, parsers: [:json], json_decoder: Poison
   plug :match
   plug :dispatch
 
   get "/answers" do
-    send_resp(conn, 200, "Magic Eight Ball says: ")
+
+    answer = ExMagicEightballWebapp.MagicEightball.get_answer("random question")
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, Poison.encode!(%{answer: answer}))
   end
 
   match _ do
