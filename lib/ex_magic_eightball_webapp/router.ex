@@ -1,19 +1,23 @@
 defmodule ExMagicEightballWebapp.Router do
   use Plug.Router
+  require EEx
 
+  plug Plug.Logger, log: :info
   plug Plug.Static,
     at: "/public",
     from: :ex_magic_eightball_webapp
-
-  require EEx
-
-  plug Plug.Parsers, parsers: [:json], json_decoder: Poison
   plug :match
   plug :dispatch
 
-  
-  # Precompile template
-  EEx.function_from_file :defp, :main, "lib/web/main.html.eex" 
+  # Precompile template into private function
+  EEx.function_from_file :defp, :main, "lib/web/main.html.eex"
+
+  def start_link do
+    # Fetch the port from the configurations
+    port = Application.get_env(:ex_magic_eightball_webapp, :port)
+    # Start the HTTP server
+    Plug.Adapters.Cowboy.http(__MODULE__, [], port: port)
+  end
   
   get "/" do
     page_contents = main()
