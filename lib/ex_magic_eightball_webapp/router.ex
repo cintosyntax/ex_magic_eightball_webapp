@@ -8,6 +8,8 @@ defmodule ExMagicEightballWebapp.Router do
   get "/answers" do
 
     answer = ExMagicEightballWebapp.MagicEightball.get_answer("random question")
+    Poison.encode!(%{answer: answer}) |> IO.puts
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, Poison.encode!(%{answer: answer}))

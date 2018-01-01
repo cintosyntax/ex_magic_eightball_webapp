@@ -10,7 +10,11 @@ defmodule ExMagicEightballWebapp.RouterTest do
 
     assert conn.state == :sent
     assert conn.status == 200
-    assert String.match?(conn.resp_body, ~r/Magic Eight Ball says: /)
+
+    {result, json_body} = Poison.decode(conn.resp_body)
+    assert result == :ok
+    assert Map.has_key?(json_body, "answer")
+    assert Enum.member?(ExMagicEightballWebapp.MagicEightball.responses, json_body["answer"]) 
   end
 
   test "returns 404 on unknown path" do
