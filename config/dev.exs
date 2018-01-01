@@ -4,4 +4,4 @@ config :remix,
   escript: true,
   silent: true
 
-config :ex_magic_eightball_webapp, port: 5000
+config :ex_magic_eightball_webapp, port: 8888
