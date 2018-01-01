@@ -11,18 +11,26 @@ defmodule ExMagicEightballWebapp.Mixfile do
     ]
   end
 
-
   # Run "mix help deps" to learn about dependencies.
   def deps do
     [
      {:cowboy, "~> 1.0.0"},
      {:plug, "~> 1.0"},
-     {:ex_guard, "~> 1.3", only: :dev}
+     {:poison, "~> 3.1"},
+     {:ex_guard, "~> 1.3", only: :dev},
+     {:remix, "~> 0.0.1", only: :dev}
     ]
   end
 
   def application do
-    [applications: [:logger, :cowboy, :plug]]
+    [
+      extra_applications: applications(Mix.env),
+      mod: {ExMagicEightballWebapp, []}
+    ]
   end
+  
+  defp applications(:dev), do: applications(:all) ++ [:remix]
+  defp applications(_all), do: [:logger, :cowboy, :plug]
 
 end
+
