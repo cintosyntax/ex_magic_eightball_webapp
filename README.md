@@ -2,7 +2,10 @@
 [![Build Status](https://travis-ci.org/cintosyntax/ex_magic_eightball_webapp.svg?branch=master)](https://travis-ci.org/cintosyntax/ex_magic_eightball_webapp)
 
 A magic 8-Ball web application built using Elixir. This application leverages the 
-[cowboy](https://github.com/ninenines/cowboy) and [plug](https://github.com/elixir-plug/plug)
+[cowboy](https://github.com/ninenines/cowboy) and [plug](https://github.com/elixir-plug/plug).
+
+Deployed on heroku @ https://eightballmagic.herokuapp.com/ 
+
  
 ## Installation
 
