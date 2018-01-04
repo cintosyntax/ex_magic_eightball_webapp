@@ -15,6 +15,8 @@ defmodule ExMagicEightballWebapp.Router do
   def start_link do
     # Fetch the port from the configurations
     port = Application.get_env(:ex_magic_eightball_webapp, :port)
+    # Inform user of port web-server is mounted on.
+    IO.puts("Starting web-server on port #{port}")
     # Start the HTTP server
     Plug.Adapters.Cowboy.http(__MODULE__, [], port: port)
   end
