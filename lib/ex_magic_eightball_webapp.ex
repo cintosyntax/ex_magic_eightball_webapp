@@ -11,8 +11,7 @@ defmodule ExMagicEightballWebapp do
   Init function that runs on application start.
   """
   def start(_type, _args) do
-    IO.puts("STARTING")
-
+    
     opts = [strategy: :one_for_one]
     Supervisor.start_link(children(), opts)
   end
@@ -22,13 +21,9 @@ defmodule ExMagicEightballWebapp do
   not enable the router for Mix.env == :test
   """
   def children() do
-    serve_http = Application.get_env(:ex_magic_eightball_webapp, :serve_http, false)
-    IO.puts("applicaiton available?")
-    IO.puts(serve_http)
-
-    case serve_http do
-      false -> []
-      true -> [
+    case Mix.env do
+      :test -> []
+      _ -> [
         worker(ExMagicEightballWebapp.Router, [])
       ]
     end
