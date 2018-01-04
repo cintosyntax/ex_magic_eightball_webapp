@@ -11,6 +11,8 @@ defmodule ExMagicEightballWebapp do
   Init function that runs on application start.
   """
   def start(_type, _args) do
+    IO.puts("STARTING")
+    
     opts = [strategy: :one_for_one]
     Supervisor.start_link(children(), opts)
   end
