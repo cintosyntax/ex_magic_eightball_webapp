@@ -6,5 +6,4 @@ port = case System.get_env("PORT") do
 end
 
 config :ex_magic_eightball_webapp, 
-  port: port, 
-  server_http: true
+  port: port
