@@ -12,17 +12,18 @@ defmodule ExMagicEightballWebapp do
   """
   def start(_type, _args) do
     opts = [strategy: :one_for_one]
-    Supervisor.start_link(children(Mix.env), opts)
+    Supervisor.start_link(children(), opts)
   end
 
   @doc """
   Dynamically set the children processes to start on application start. It should
   not enable the router for Mix.env == :test
   """
-  def children(env) do
-    case env do
-      :test -> []
-      _ -> [
+  def children() do
+    serve_http = Application.get_env(:ex_magic_eightball_webapp, :serve_http, false)
+    case serve_http do
+      false -> []
+      true -> [
         worker(ExMagicEightballWebapp.Router, [])
       ]
     end

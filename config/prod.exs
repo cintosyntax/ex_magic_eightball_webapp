@@ -5,4 +5,6 @@ port = case System.get_env("PORT") do
   nil -> 80 # default port
 end
 
-config :ex_magic_eightball_webapp, port: port
+config :ex_magic_eightball_webapp, 
+  port: port, 
+  server_http: true
