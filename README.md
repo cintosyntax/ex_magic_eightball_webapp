@@ -14,6 +14,13 @@ Run this bash script
 bin/setup
 ```
 
+## Starting
+
+Run the application on default port (5000)
+```bash
+mix run --no-halt
+```
+
 ## Testing
 
 Single test run
