@@ -72,7 +72,7 @@
 
           <footer class="mastfoot">
             <div class="inner">
-              <p>Created using Elixir + Plug by <a href="https://github.com/cintosyntax"> Cintosyntax</a>.
+              <p>Created using Elixir + Plug by <a href="https://github.com/edwinthinks">Edwin Mak</a>.
             </p>
             </div>
           </footer>
